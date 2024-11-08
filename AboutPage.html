@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="LMD Logo.png" type="image/x-icon">
+    <title>Light Media Digitals</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Sidebar transition for smooth animation */
+        #sidebar {
+            width: 0;
+            transition: width 0.3s;
+            overflow: hidden;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            color: inherit; /* Keep the same color as the h1 */
+        }
+
+        /* About Image */
+        .team-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+        .team-section h2 {
+            font-size: 2.5em;
+            color: #fad02c;
+        }
+        .team-section img {
+            max-width: 70%;
+            height: auto;
+            width: 70%;
+            max-width: 1600px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .team-section img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #lighttxt {
+            font-family: 'opensauce', sans-serif;
+            color: #fff;
+        }
+
+        .team-member {
+            position: relative;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        /* Team Member Social Media Card */
+        .social-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            width: 300px;
+            max-width: 90%;
+        }
+
+        .social-card h3 {
+            margin-top: 0;
+        }
+
+        .team-socials a {
+            margin: 0 10px;
+            color: #fff;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .team-socials a:hover {
+            color: #fad02c;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #666;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            margin: 0 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #fad02c;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            color: #fff;
+            background-color: #333;
+            border-radius: 50%;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: #fad02c;
+            color: #111;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="Light.html" class="logo-link"><h1 class="logotext">light.</h1></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Light.html#features">Features</a></li>
+                <li><a href="Light.html">Shop</a></li>
+                <li><a href="Light.html#packages">Packages</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="hamburger" onclick="toggleSidebar()">☰</div>
+        </div>
+    </header>
+
+    <!-- Sidebar with Titles and Uniform Dividers -->
+    <div id="sidebar" class="sidebar">
+        <!-- Close Button inside Sidebar -->
+        <span class="close-btn" onclick="toggleSidebar()">×</span>
+        <div class="sidebar-content">
+            <div class="section">
+                <span class="section-title">Home</span>
+                <a href="Light.html#features" onclick="closeSidebar()"><i class="fa-solid fa-fire"></i> Features</a>
+                <a href="Light.html" onclick="closeSidebar()"><i class="fa fa-shopping-bag"></i> Shop</a>
+                <a href="Light.html#packages" onclick="closeSidebar()"><i class="fa fa-gift"></i> Packages</a>
+                <a href="#" onclick="closeSidebar()"><i class="fa fa-list"></i> Orders</a>
+            </div>
+            <div class="section">
+                <span class="section-title">About Light</span>
+                <a href="AboutPage.html"><i class="fa fa-users"></i> Our Team</a>
+                <a href="#" onclick="closeSidebar()"><i class="fa fa-briefcase"></i> Portfolio</a>
+                <a href="#" onclick="closeSidebar()"><i class="fa fa-phone"></i> Contacts</a>
+                <a href="#" onclick="closeSidebar()"><i class="fa fa-envelope"></i> Message Us</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="team-section">
+        <h2>Meet the <span id="lighttxt">light.</span> Team!</h2>
+        
+        <!-- Team Member 1 -->
+        <div class="team-member">
+            <img src="aboutcj.png" alt="Our Team" width="1600" height="800" class="team-image" onclick="showCard(1)">
+            
+            <!-- Social Media Card for Team Member 1 -->
+            <div class="social-card" id="card-1">
+                <h3>Connect with Me</h3>
+                <div class="team-socials">
+                    <a href="https://www.facebook.com/share/1CWrWUyPkF/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/chrlsjhnc/profilecard/?igsh=Zzk1Z25nNWhtc21o" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@slrhc_c?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-links">
+                <a href="#privacy-policy">Terms of Service</a> |
+                <a href="#privacy-policy">Privacy Policy</a> 
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>              
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 Light Media Digitals. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+
+        function showCard(memberId) {
+            const card = document.getElementById(`card-${memberId}`);
+            const isVisible = card.style.display === "block";
+
+            // Hide all other cards
+            document.querySelectorAll('.social-card').forEach(card => card.style.display = 'none');
+
+            // Toggle the current card's visibility
+            card.style.display = isVisible ? "none" : "block";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Package</title>
+  <style>
+    /* Basic Overlay Style */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden; /* Prevent scrolling */
+    }
+
+    /* Card Style */
+    .purchase-card {
+      background-color: #333; /* Dark gray card background */
+      padding: 20px;
+      width: 900px; /* Width for rectangular shape */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: flex; /* Use flex to arrange items */
+      justify-content: space-between; /* Space between form and summary */
+      min-height: 400px; /* Increased minimum height for the card */
+      color: white; /* Set default text color to white */
+    }
+
+    .form-section {
+      flex: 1; /* Takes up remaining space */
+      padding-right: 20px; /* Space between form and summary */
+    }
+
+    .purchase-card h2 {
+      text-align: center;
+      margin: 0;
+      padding-bottom: 15px;
+      width: 100%; /* Ensure title is centered */
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    select, input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #444; /* Match form fields to a darker background */
+      color: white; /* White text color for input fields */
+    }
+
+    select option {
+      background-color: #444; /* Set the background color for dropdown options */
+      color: white; /* Set the text color for dropdown options */
+    }
+
+    select:hover, select:focus {
+      background-color: #444; /* Maintain dark background on hover */
+    }
+
+    .summary {
+      width: 250px; /* Fixed width for the summary */
+      background-color: #444; /* Darker background for summary matching the card */
+      padding: 10px;
+      border-radius: 4px;
+      flex: 0 0 auto; /* Prevent summary from growing */
+    }
+
+    .summary h3 {
+      margin: 0;
+      padding-bottom: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      padding-left: 80px;
+    }
+
+    button {
+      padding: 8px; /* Reduced padding */
+      width: 48%;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px; /* Smaller font size */
+      font-family: Arial, sans-serif; /* Match font with the rest of the text */
+    }
+
+    button[type="button"] {
+      background-color: #888;
+      color: white;
+    }
+
+    button[type="submit"] {
+      background-color: white; /* White background for submit button */
+      color: black;
+      transition: background-color 0.3s; /* Add transition for hover effect */
+    }
+
+    button[type="submit"]:hover {
+      background-color: #fad02c; /* Change to yellow on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="purchase-card" id="purchaseCard">
+    <div class="form-section">
+      <h2>Complete Your Purchase</h2>
+      <form id="purchaseForm">
+        <!-- Package Selection -->
+        <label for="package">Package</label>
+        <select id="package" name="package" required>
+          <option value="" selected disabled>Choose a Package</option>
+          <option value="Student Package">Student Package</option>
+          <option value="Regular Package">Regular Package</option>
+        </select>
+
+        <!-- Payment Mode Selection -->
+        <label for="payment">Payment Method</label>
+        <select id="payment" name="payment" required>
+          <option value="" selected disabled>Choose a Payment Method</option>
+          <option value="Credit/Debit Card">Credit/Debit Card</option>
+          <option value="GCash">GCash</option>
+          <option value="PayPal">PayPal</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+        </select>
+
+        <!-- Customer Information -->
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="contact">Contact Number</label>
+        <input type="tel" id="contact" name="contact" required>
+      </form>
+    </div>
+
+    <div class="summary">
+      <h3>Order Summary</h3>
+      <p>Package: <span id="selectedPackage">Not Selected</span></p>
+      <p>Mode of Payment: <span id="selectedPayment">Not Selected</span></p>
+      <p>Total Price: <span id="totalPrice">N/A</span></p>
+      <p>Name: <span id="customerName">Not Provided</span></p>
+      <p>Email: <span id="customerEmail">Not Provided</span></p>
+      <p>Contact Number: <span id="customerContact">Not Provided</span></p>
+      <div class="buttons">
+        <button type="submit" form="purchaseForm">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Reset form fields on page load
+    resetForm();
+
+    // Reset form fields
+    function resetForm() {
+      document.getElementById("purchaseForm").reset();
+      document.getElementById("selectedPackage").innerText = "Not Selected";
+      document.getElementById("selectedPayment").innerText = "Not Selected";
+      document.getElementById("totalPrice").innerText = "N/A";
+      document.getElementById("customerName").innerText = "Not Provided";
+      document.getElementById("customerEmail").innerText = "Not Provided";
+      document.getElementById("customerContact").innerText = "Not Provided";
+    }
+
+    // Update summary when package selection changes
+    document.getElementById("package").addEventListener("change", function () {
+      document.getElementById("selectedPackage").innerText = this.value;
+
+      // Update price based on package selected
+      const totalPrice = this.value === "Student Package" ? "₱999 | $17" : "₱1999 | $30"; // Updated prices
+      document.getElementById("totalPrice").innerText = totalPrice;
+    });
+
+    // Update summary when payment mode changes
+    document.getElementById("payment").addEventListener("change", function () {
+      document.getElementById("selectedPayment").innerText = this.value;
+    });
+
+    // Update summary with customer information
+    document.getElementById("name").addEventListener("input", function () {
+      document.getElementById("customerName").innerText = this.value || "Not Provided";
+    });
+
+    document.getElementById("email").addEventListener("input", function () {
+      document.getElementById("customerEmail").innerText = this.value || "Not Provided";
+    });
+
+    document.getElementById("contact").addEventListener("input", function () {
+      document.getElementById("customerContact").innerText = this.value || "Not Provided";
+    });
+
+    // Close the window (or overlay) function
+    function closeWindow() {
+      const overlay = document.getElementById('purchaseCard');
+      overlay.style.display = 'none'; // Hides the overlay
+    }
+
+    // Handle form submission
+    document.getElementById("purchaseForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Order submitted! We'll be in touch soon.");
+      closeWindow();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="LMD Logo.png" type="image/x-icon">
+    <title>Light Media Digitals</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1>light.</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#featured">Features</a></li>
+                <li><a href="#trends">Trending News</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li>
+                    <a href="#">More</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contacts</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="hamburger-icon">☰</div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>Unlock the Power of <span style="color: #fad02c;">Digital Products!</span></h2>
+            <p>Launch your business and start earning through online with us!</p>
+            <div class="hero-buttons">
+                <a id="learnMoreButton">Learn More</a>
+                <!-- Updated Buy Now button to open the form in a new tab -->
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgvJtxcDlp7OVXFsLWDc5BD-BxYSs6bZhqPwtKX4Et4B_CRA/viewform?embedded=true" target="_blank" id="buyNowButton">Buy Now</a>
+            </div>
+        </div>
+        <img src="heroimg.png" alt="Hero Image" class="hero-image" style="width: 45%;">
+    </section>
+
+    <section class="featured-section" id="featured">
+        <h3>Features</h3>
+        <div class="carousel-container">
+            <button class="carousel-button" id="prevButton">❮</button>
+            <img src="F1.png" alt="Featured Product" class="featured-image" id="featuredImage">
+            <button class="carousel-button" id="nextButton">❯</button>
+        </div>
+    </section>
+
+    <section class="trending-news-section" id="trends">
+        <h2 class="trending-news-heading">Trending News</h2>
+        <div class="news-cards">
+            <div class="news-card">
+                <img src="trend1.png" alt="Trending Digital Products">
+                <h4>Want to earn? Partner now with Light!</h4>
+            </div>
+            <div class="news-card">
+                <img src="trend2.png" alt="Editing Software">
+                <h4>Best Tools to Boost Teamwork</h4>
+            </div>
+            <div class="news-card">
+                <img src="trend3.png" alt="Notable News">
+                <h4>Social Media: The Digital Game-Changer</h4>
+            </div>
+        </div>
+        <div class="see-more">
+            <a href="news.html">See More </a>
+        </div>
+    </section>    
+
+    <section class="packages-section" id="packages">
+        <h3>Packages & Payment Methods</h3>
+        <div class="payment-cards">
+            <div class="card">
+                <h4>Student Package</h4>
+                <ul>
+                    <li>LMD Digibook Course</li>
+                    <li>Digital Product Blueprint</li>
+                    <li>Mockup Templates</li>
+                    <li>RaketPH Guide</li>
+                    <li>Free Seminars & Trainings</li>
+                    <li>Free Online Consultations</li>
+                    <li>Portfolio Kit</li>
+                    <li>Sales Tracker</li>
+                    <li>And access to a community with other student entrepreneurs!</li>
+                </ul>
+                <div class="price">₱999 | $17</div>
+            </div>
+            <div class="card">
+                <h4>Regular Package</h4>
+                <ul>
+                    <li>LMD Digibook Course</li>
+                    <li>Digital Product Blueprint</li>
+                    <li>Digital Product Creation Course</li>
+                    <li>Marketing Course</li>
+                    <li>Mockup Templates</li>
+                    <li>RaketPH Guide</li>
+                    <li>Canva Kit</li>
+                    <li>Free Seminars & Trainings</li>
+                    <li>Free Online Consultations</li>
+                    <li>Portfolio Kit</li>
+                    <li>Sales Tracker</li>
+                    <li>And exclusive access to LMD community with other entrepreneurs!</li>
+                </ul>
+                <div class="price">₱1999 | $30</div>
+            </div>
+            <div class="payment-card">
+                <h4>Payment Methods</h4>
+                <ul>
+                    <li>Credit/Debit</li>
+                    <li>Bank Transfer</li>
+                    <li>GCash</li>
+                    <li>PayPal</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Light Media Digitals. All rights reserved. | <a href="#privacy-policy">Privacy Policy</a> | <a href="#privacy-policy">Terms of Service</a></p>
+    </footer>
+
+    <script>
+                // Function to open the Google Form Modal
+                const buyNowButton = document.getElementById("buyNowButton");
+        const formModal = document.getElementById("formModal");
+
+        buyNowButton.addEventListener("click", () => {
+            formModal.style.display = "flex"; // Show the modal
+        });
+
+        // Function to close the Google Form Modal
+        function closeFormModal() {
+            formModal.style.display = "none"; // Hide the modal
+        }
+
+        // Modal functionality for the video
+        const modal = document.getElementById("myModal");
+        const learnMoreButton = document.getElementById("learnMoreButton");
+        const closeModalButton = document.getElementById("closeModal");
+        const videoElement = modal.querySelector("video");
+
+        learnMoreButton.addEventListener("click", () => {
+            modal.style.display = "block";
+        });
+
+        closeModalButton.addEventListener("click", () => {
+            modal.style.display = "none";
+            videoElement.pause(); // Pause the video when the modal is closed
+            videoElement.currentTime = 0; // Reset video playback to the beginning
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+                videoElement.pause();
+                videoElement.currentTime = 0;
+            }
+        });
+    </script>
+    </script>
+</body>
+</html>

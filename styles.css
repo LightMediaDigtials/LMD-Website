@@ -1,0 +1,532 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'opensauce';
+    src: url('open-sauce.sans-bold.ttf') format('truetype');
+  }
+  
+
+/* Global Styles */
+body, html {
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header and Navbar */
+header {
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logolink {
+    text-decoration: none;
+    color: inherit; /* Keep the same color as the h1 */
+}
+
+
+
+.logotext {
+    color: #fad02c;
+    font-size: 24px;
+    margin: 0;
+    font-weight: bold;
+    font-family: 'opensauce', sans-serif;
+    
+}
+nav {
+    margin-right: auto;
+    margin-left: 20px;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    margin-left: 20px;
+    position: relative; /* Needed for sub-menu positioning */
+}
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+nav ul li a:hover {
+    color: #fad02c;
+}
+
+/* Progress Bar Style */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background-color: #fad02c; /* Yellow color */
+    z-index: 1000;
+    transition: width 0.25s ease-out;
+}
+
+
+/* Search bar and Hamburger icon */
+.actions {
+    display: flex;
+    align-items: center;
+}
+.search-bar {
+    position: relative;
+    margin-right: 30px;
+}
+.search-bar input {
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 15px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #fff;
+    width: 150px;
+    transition: width 0.3s ease;
+}
+.search-bar input:focus {
+    width: 200px;
+    outline: none;
+    border-color: #fad02c;
+}
+.hamburger {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 10px;
+    position: fixed;
+    top: 3px;
+    right: 4px;
+    z-index: 1000;
+}
+.hamburger:hover {
+    color: #fad02c;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+/*SIDE BAR CONTENT*/
+
+/* Sidebar Styles */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    color: white;
+    overflow-x: hidden;
+    transition: width 0.5s ease, opacity 0.3s ease;
+    z-index: 1000;
+    box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+  }
+  
+  .sidebar[style*="width: 250px"] {
+    width: 250px;
+    opacity: 1;
+  }
+  
+  /* Sidebar content visibility */
+  .sidebar-content {
+    padding-top: 60px;
+    opacity: 0; /* Start with hidden content */
+    transition: opacity 0.3s ease;
+  }
+  
+  .sidebar[style*="width: 250px"] .sidebar-content {
+    opacity: 1; /* Fade in content when sidebar opens */
+  }
+  
+  /* Close Button Inside Sidebar */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .close-btn:hover {
+    color: #fad02c; /* Yellow hover */
+  }
+  
+  /* Section Titles (non-clickable) */
+  .section-title {
+    font-weight: bold;
+    font-size: 20px;
+    color: #fad02c; /* Yellow color */
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  
+  /* Sidebar Links */
+  .sidebar a {
+    padding: 12px 20px;
+    font-size: 18px;
+    color: white;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between links */
+  }
+  
+  .sidebar a:hover {
+    background-color: #222; /* Hover background */
+    color: #fad02c; /* Yellow text on hover */
+  }
+  
+  /* Icon Styling */
+  .sidebar i {
+    margin-right: 15px; /* Space between icon and text */
+    color: #fad02c;
+    transition: color 0.3s ease;
+  }
+  
+  .sidebar a:hover i {
+    color: white; /* Change icon color on hover */
+  }
+  
+  /* Section Styling */
+  .section {
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  
+  /* Add smooth hover effect for icons and links */
+  .sidebar a:hover, .sidebar i {
+    transform: translateX(5px); /* Slight movement for interaction */
+  }
+  
+  /* Font Awesome Icons - Include this in your HTML head for icons */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+  
+/*SIDE BAR END*/
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 20px;
+    color: #fff;
+    background-color: #111;
+    text-align: left;
+}
+.hero-content {
+    max-width: 500px;
+    padding-left: 70px;
+}
+.hero-content h2 {
+    color: #fff;
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    line-height: 1.2;
+}
+.hero-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #ccc;
+    line-height: 1.4;
+}
+.hero-buttons a {
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #333;
+    color: #fff;
+    margin-right: 10px; /* Increase space between buttons */
+}
+.hero-buttons a:hover {
+    background-color: #fff;
+    color: #111;
+}
+
+
+/* Featured Section */
+.featured-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+.featured-section h3 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+.featured-image {
+    width: 75%; /* Adjusted size to 75% */
+    max-width: 2430px; /* Maximum width to maintain aspect ratio */
+    border: none; /* Square edges */
+}
+.carousel-container {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    justify-content: center; /* Center the container */
+}
+.carousel-button {
+    background-color: #222; /* Lighter black background */
+    border: none; /* Remove border */
+    color: #fad02c; /* Dark yellow text */
+    font-size: 24px; /* Size of the arrow */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin: 0 15px; /* Space between buttons and image */
+    padding: 10px; /* Padding for better click area */
+    transition: background-color 0.3s; /* Hover effect */
+}
+.carousel-button:hover {
+    background-color: #fad02c; /* Background on hover */
+    color: #111; /* Text color on hover */
+}
+
+/* BLOG SECTION */
+
+#blog {
+    padding: 80px 20px; /* Increased padding for more space */
+    background-color: #111; /* Dark background */
+    color: #ffffff; /* White text color */
+    font-family: Arial, sans-serif;
+    max-width: 900px; /* Slightly wider for more spacious feel */
+    margin: 0 auto; /* Center the blog content */
+    border-radius: 8px; /* Rounded corners for a softer look */
+
+}
+
+#blog h2 {
+    text-align: center;
+}
+
+#blog h2, #blog h3 {
+    color: #fad02c; /* Brand yellow for headings */
+    font-family: 'opensauce', sans-serif;
+}
+
+#blog h2 {
+    font-size: 2.5rem; /* Larger size for the main title */
+    margin-bottom: 40px; /* Increased space below the main title */
+}
+
+#blog h3 {
+    font-size: 2rem; /* Larger size for subheadings */
+    margin-top: 50px; /* More space above subheadings */
+    margin-bottom: 20px; /* Space below subheadings */
+}
+
+#blog p {
+    line-height: 1.8; /* Increased line-height for easier reading */
+    margin-bottom: 25px; /* Increased bottom margin for spacing */
+    font-size: 1.1rem; /* Slightly larger font size */
+    color: #ddd; /* Lighter text color for paragraph for contrast */
+}
+
+#blog ol {
+    padding-left: 30px; /* Slightly more indentation */
+    color: #ddd; /* Lighter text for ordered list */
+    font-size: 1.1rem; /* Slightly larger font for the list */
+}
+
+#blog ol li {
+    margin-bottom: 15px; /* Increased margin between list items */
+}
+
+#blog ol li strong {
+    color: #ffffff; /* White text for list item examples */
+}
+
+#blog a {
+    color: #fad02c; /* Yellow color for links */
+    text-decoration: none; /* Remove underline */
+}
+
+#blog a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+/* Add this to ensure the video aligns with the blog section */
+.blog-video {
+    margin-top: 20px;
+    max-width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for styling */
+}
+
+
+/* Packages & Payment Methods Section */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.packages-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+.packages-section h3 {
+    margin-bottom: 30px;
+}
+.payment-cards {
+    display: flex;
+    justify-content: center; /* Center the cards */
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow cards to wrap */
+}
+.card, .payment-card {
+    background-color: #222;
+    border-radius: 8px;
+    padding: 25px; /* Increase padding */
+    flex: 1;
+    transition: transform 0.3s, box-shadow 0.3s; /* Added shadow transition */
+    max-width: 260px; /* Keep the card size */
+    height: 450px; /* Set a fixed height for the cards */
+    text-align: center;
+    margin: 0 15px; /* Equal margin on left and right */
+}
+.card:hover, .payment-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Darker shadow on hover */
+}
+.card h4, .payment-card h4 {
+    color: #fad02c;
+    margin-bottom: 15px;
+}
+.card ul, .payment-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #ccc;
+    text-align: left;
+}
+.card .price, .payment-card .price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fad02c;
+    margin-top: 15px;
+}
+
+/* Modal for Video */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+    background-color: #222;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: none;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #fad02c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: #666;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #333;
+}
+
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #666;
+    margin: 0 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #fad02c;
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    background-color: #333;
+    border-radius: 50%;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #fad02c;
+    color: #111;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}

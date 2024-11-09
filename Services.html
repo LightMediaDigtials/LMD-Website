@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="LMD Logo.png" type="image/x-icon">
+    <title>Light Media Digitals</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+
+        /* Sidebar transition for smooth animation */
+        #sidebar {
+            width: 0;
+            transition: width 0.3s;
+            overflow: hidden;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            color: inherit; /* Keep the same color as the h1 */
+        }
+
+        /* Full-Width Header Image */
+        .header-image {
+            background-image: url('serviceheader.png'); /* Replace with the path to your image */
+            background-size: cover;
+            background-position: center;
+            margin-top: 10px;
+            width: 100%;
+            height: 370px; /* Adjust height as needed */
+        }
+
+
+        /* Services Section */
+        .services-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #111;
+            color: #fff;
+        }
+
+        .services-section h2 {
+            font-size: 2em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        /* Grid container for the services */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 30px; /* Increased gap for more space between boxes */
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        #heading {
+            font-family: "opensauce", sans-serif;
+        }
+        /* Individual service box */
+        .service-box {
+            background-color: #111; /* Darker background */
+            padding: 30px 15px; /* Reduced padding to make boxes smaller */
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            color: #fff;
+        }
+
+        .service-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-box i {
+            font-size: 2em;
+            color: #fad02c;
+            margin-bottom: 15px;
+        }
+
+        .service-box h3 {
+            font-size: 1.2em;
+            font-family: "opensauce", sans-serif;
+            color: #fad02c;
+            margin-bottom: 10px;
+        }
+
+        .service-box p {
+            font-size: 0.9em;
+            color: #fff;
+        }
+
+        /* Modal Styling for Corporate Look */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: rgba(10, 10, 10, 0.87);
+            color: #fff;
+            padding: 30px;
+            width: 50%;
+            max-width: 400px;
+            height: 60%;
+            text-align: left;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .modal-content h2 {
+            font-family: "opensauce", sans-serif;
+            font-size: 2em;
+            color: #fad02c;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .modal-content p {
+            font-size: 1.2em;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        /* Contact Button */
+        .contact-btn {
+            background-color: #fff;
+            color: #111;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #fad02c;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #fad02c;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111;
+            color: #666;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            margin: 0 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #fad02c;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            color: #fff;
+            background-color: #333;
+            border-radius: 50%;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: #fad02c;
+            color: #111;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="logo-link"><h1 class="logotext">light.</h1></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html">Shop</a></li>
+                <li><a href="index.html#packages">Packages</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="hamburger" onclick="toggleSidebar()">☰</div>
+        </div>
+    </header>
+
+    <!-- Sidebar with Titles and Uniform Dividers -->
+    <div id="sidebar" class="sidebar">
+        <!-- Close Button inside Sidebar -->
+        <span class="close-btn" onclick="toggleSidebar()">×</span>
+        <div class="sidebar-content">
+            <div class="section">
+                <span class="section-title">Home</span>
+                <a href="index.html#features" onclick="closeSidebar()"><i class="fa-solid fa-fire"></i> Features</a>
+                <a href="index.html" onclick="closeSidebar()"><i class="fa fa-shopping-bag"></i> Shop</a>
+                <a href="index.html#packages" onclick="closeSidebar()"><i class="fa fa-gift"></i> Packages</a>
+                <a href="#" onclick="CloseSidebar()"><i class="fa-solid fa-wrench"></i> Services</a>
+            </div>
+            <div class="section">
+                <span class="section-title">About Light</span>
+                <a href="AboutPage.html"><i class="fa fa-users"></i> Our Team</a>
+                <a href="#" onclick="closeSidebar()"><i class="fa fa-briefcase"></i> Portfolio</a>
+                <a href="#" onclick="closeSidebar()"><i class="fa fa-phone"></i> Contacts</a>
+                <a href="#" onclick="closeSidebar()"><i class="fa fa-envelope"></i> Message Us</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-image"></div>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2 id="heading">Our Services</h2>
+        
+        <div class="services-container">
+            <!-- Service boxes (6 services) -->
+            <div class="service-box" onclick="showModal('webDevelopment')">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>Build functional and engaging websites that convert visitors into customers.</p>
+            </div>
+            <div class="service-box" onclick="showModal('videoEditing')">
+                <i class="fas fa-video"></i>
+                <h3>Video Editing</h3>
+                <p>Transform raw footage into polished, captivating videos for any platform.</p>
+            </div>
+            <div class="service-box" onclick="showModal('graphicDesign')">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Graphic Design</h3>
+                <p>Create visually appealing graphics that capture your brand’s essence.</p>
+            </div>
+            <div class="service-box" onclick="showModal('smMarketing')">
+                <i class="fas fa-search"></i>
+                <h3>Social Media Marketing</h3>
+                <p>Promote your brand through social media to reach a broader audience.</p>
+            </div>
+            <div class="service-box" onclick="showModal('digitalMarketing')">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Digital Marketing</h3>
+                <p>Reach your target audience through effective digital marketing strategies.</p>
+            </div>
+            <div class="service-box" onclick="showModal('contentCreation')">
+                <i class="fas fa-pencil-alt"></i>
+                <h3>Content Creation</h3>
+                <p>Develop high-quality content to engage and inform your audience.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Web Development</h2>
+            <p id="modalDescription">We specialize in creating stunning websites, web applications, and custom software solutions. Whether you need a simple website or a complex program, we can help you build it.</p>
+            <button class="contact-btn" onclick="contactUs()">Contact Us</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-links">
+                <a href="#privacy-policy">Terms of Service</a> |
+                <a href="#privacy-policy">Privacy Policy</a> 
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61566481576394&mibextid=ZbWKwL" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/lightmedia.digitals/profilecard/?igsh=YjE0OG5vZTE0YmVq" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://youtube.com/@lightmediadigitals?si=Qu-HjzhAsAgk89ZJ" target="_blank"><i class="fa-brands fa-youtube"></i></a>              
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="mailto:lightmedia.digitals@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 Light Media Digitals. All rights reserved.</p>
+    </footer>
+
+<script>
+
+function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+
+    function showModal(service) {
+            const modal = document.getElementById('serviceModal');
+            const title = document.getElementById('modalTitle');
+            const description = document.getElementById('modalDescription');
+
+            // Set the content based on the service
+            if (service === 'webDevelopment') {
+                title.textContent = 'Web Development';
+                description.textContent = 'We specialize in creating stunning websites, web applications, and custom software solutions. Whether you need a simple website or a complex program, we can help you build it. Pricing will depend on the features you require.';
+            } else if (service === 'videoEditing') {
+                title.textContent = 'Video Editing';
+                description.textContent = 'Transform raw footage into polished, captivating videos for any platform. Our team will create engaging video content tailored to your needs.';
+            } else if (service === 'graphicDesign') {
+                title.textContent = 'Graphic Design';
+                description.textContent = 'Our graphic design service will elevate your brand with eye-catching visuals, including logos, posters, and marketing materials.';
+            } else if (service === 'smMarketing') {
+                title.textContent = 'Social Media Marketing';
+                description.textContent = 'Enhance your visibility on search engines with tailored SEO strategies to drive organic traffic to your website.';
+            } else if (service === 'digitalMarketing') {
+                title.textContent = 'Digital Marketing';
+                description.textContent = 'Reach your target audience through social media, email campaigns, and digital advertising with our marketing services.';
+            } else if (service === 'contentCreation') {
+                title.textContent = 'Content Creation';
+                description.textContent = 'Develop high-quality content for blogs, videos, social media, and websites to engage your audience effectively.';
+            }
+
+            // Show the modal
+            modal.style.display = 'flex';
+        }
+
+        // Close the modal
+        function closeModal() {
+            const modal = document.getElementById('serviceModal');
+            modal.style.display = 'none';
+        }
+
+        // Contact Us function (you can replace with your contact page URL or logic)
+        function contactUs() {
+            window.location.href = '/contact';
+        }
+
+
+</script>
+
+
+</body>
+</html>

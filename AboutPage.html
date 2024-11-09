@@ -186,7 +186,7 @@
                 <li><a href="index.html#features">Features</a></li>
                 <li><a href="index.html">Shop</a></li>
                 <li><a href="index.html#packages">Packages</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="Services.html">Services</a></li>
             </ul>
         </nav>
         <div class="actions">
@@ -207,7 +207,7 @@
                 <a href="index.html#features" onclick="closeSidebar()"><i class="fa-solid fa-fire"></i> Features</a>
                 <a href="index.html" onclick="closeSidebar()"><i class="fa fa-shopping-bag"></i> Shop</a>
                 <a href="index.html#packages" onclick="closeSidebar()"><i class="fa fa-gift"></i> Packages</a>
-                <a href="#" onclick="CloseSidebar()"><i class="fa-solid fa-wrench"></i> Services</a>
+                <a href="Services.html" onclick="CloseSidebar()"><i class="fa-solid fa-wrench"></i> Services</a>
             </div>
             <div class="section">
                 <span class="section-title">About Light</span>
@@ -295,6 +295,17 @@
         // Toggle the current card's visibility
         card.style.display = isVisible ? "none" : "block";
     }
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+
 
     </script>
 </body>

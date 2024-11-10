@@ -150,6 +150,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            text-decoration: none; /* Ensure no underlines if it's styled like a link */
         }
 
         .contact-btn:hover {
@@ -329,10 +330,10 @@
                 <h3>Graphic Design</h3>
                 <p>Create visually appealing graphics that capture your brand’s essence.</p>
             </div>
-            <div class="service-box" onclick="showModal('smMarketing')">
-                <i class="fas fa-search"></i>
-                <h3>Social Media Marketing</h3>
-                <p>Promote your brand through social media to reach a broader audience.</p>
+            <div class="service-box" onclick="showModal('productDesign')">
+                <i class="fa-solid fa-palette"></i>
+                <h3>Product Design</h3>
+                <p>Bringing your product vision to life with design that resonates.</p>
             </div>
             <div class="service-box" onclick="showModal('digitalMarketing')">
                 <i class="fas fa-bullhorn"></i>
@@ -420,9 +421,9 @@ function toggleSidebar() {
             } else if (service === 'graphicDesign') {
                 title.textContent = 'Graphic Design';
                 description.textContent = 'Our graphic design service will elevate your brand with eye-catching visuals, including logos, posters, and marketing materials.';
-            } else if (service === 'smMarketing') {
-                title.textContent = 'Social Media Marketing';
-                description.textContent = 'Enhance your visibility on search engines with tailored SEO strategies to drive organic traffic to your website.';
+            } else if (service === 'productDesign') {
+                title.textContent = 'Product Design';
+                description.textContent = 'Transforming ideas into market-ready products with expert design and innovation.';
             } else if (service === 'digitalMarketing') {
                 title.textContent = 'Digital Marketing';
                 description.textContent = 'Reach your target audience through social media, email campaigns, and digital advertising with our marketing services.';
@@ -443,12 +444,10 @@ function toggleSidebar() {
 
         // Contact Us function (you can replace with your contact page URL or logic)
         function contactUs() {
-            window.location.href = '/contact';
+            window.open('https://forms.gle/RMwG2FgssDwTPuxG8', '_blank');
         }
 
 
 </script>
-
-
 </body>
 </html>
